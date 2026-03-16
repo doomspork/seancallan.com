@@ -1,5 +1,0 @@
-{% for check in site.data.core.categories %}
-  {%- if include.name == check.name -%}
-    {%- assign category = check -%}
-  {%- endif -%}
-{% endfor %}
