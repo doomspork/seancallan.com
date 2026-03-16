@@ -1,0 +1,46 @@
+---
+interface Props {
+  title: string;
+  url: string;
+  date: string;
+  summary: string;
+  source: string;
+}
+
+const { title, url, date, summary, source } = Astro.props;
+
+const formattedDate = new Date(date).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+
+const sourceColor = source === 'utensils.io'
+  ? 'bg-gold/15 text-gold border-gold/25'
+  : 'bg-purple/15 text-purple border-purple/25';
+---
+
+<a
+  href={url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group block py-6 border-b border-border-subtle hover:border-teal/30 transition-colors"
+>
+  <div class="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-6">
+    <div class="shrink-0 text-text-muted text-sm font-mono w-28">{formattedDate}</div>
+    <div class="flex-1">
+      <div class="flex items-center gap-3 mb-2 flex-wrap">
+        <h3 class="font-heading font-medium text-text-light group-hover:text-teal transition-colors">
+          {title}
+        </h3>
+        <span class:list={["text-xs font-medium px-2 py-0.5 rounded-full border", sourceColor]}>
+          {source}
+        </span>
+        <svg class="w-4 h-4 text-text-muted opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+      </div>
+      <p class="text-text-muted text-sm leading-relaxed">{summary}</p>
+    </div>
+  </div>
+</a>

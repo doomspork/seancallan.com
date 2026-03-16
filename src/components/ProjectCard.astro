@@ -1,0 +1,41 @@
+---
+interface Props {
+  title: string;
+  url: string;
+  role: string;
+  summary: string;
+  featured?: boolean;
+}
+
+const { title, url, role, summary, featured = false } = Astro.props;
+---
+
+<a
+  href={url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class:list={[
+    "group block rounded-xl border border-border-subtle p-6 transition-all duration-300",
+    "hover:border-teal/40 hover:bg-bg-card-hover hover:shadow-[0_0_30px_rgba(57,255,20,0.1)]",
+    "hover:-translate-y-1",
+    featured ? "bg-bg-card md:col-span-2 md:flex md:items-center md:gap-8" : "bg-bg-card",
+  ]}
+>
+  <div class={featured ? "md:flex-1" : ""}>
+    <div class="flex items-center gap-3 mb-3">
+      <h3 class="font-heading font-semibold text-lg text-text-light group-hover:text-teal transition-colors">
+        {title}
+      </h3>
+      <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-purple/15 text-purple border border-purple/25">
+        {role}
+      </span>
+    </div>
+    <p class="text-text-muted text-sm leading-relaxed">{summary}</p>
+  </div>
+  <div class="mt-4 md:mt-0 flex items-center gap-1 text-teal text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+    <span>View</span>
+    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+    </svg>
+  </div>
+</a>

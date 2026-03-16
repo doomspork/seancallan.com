@@ -1,0 +1,98 @@
+---
+import WritingCard from './WritingCard.astro';
+
+const writings = [
+  {
+    title: 'TIL: Persona-based Prompting',
+    url: 'https://utensils.io/articles/til-persona-based-prompting',
+    date: '2025-04-22',
+    summary: 'Exploring how giving AI a persona leads to more personalized interactions and better results.',
+    source: 'utensils.io',
+  },
+  {
+    title: 'Staying Clean with Git Hygiene',
+    url: 'https://utensils.io/articles/staying-clean-with-git-hygiene',
+    date: '2025-04-11',
+    summary: 'Practical version control recommendations designed to improve team collaboration with tips teammates will appreciate.',
+    source: 'utensils.io',
+  },
+  {
+    title: 'Trigger GitHub Actions from another repository',
+    url: 'https://utensils.io/articles/trigger-github-actions-from-another-repo',
+    date: '2021-06-13',
+    summary: 'A workaround for cross-repository workflow automation, addressing the lack of official GitHub support for triggering workflows across repos.',
+    source: 'utensils.io',
+  },
+  {
+    title: 'Going Static with NextJS and TailwindCSS',
+    url: 'https://utensils.io/articles/going-static-with-nextjs-and-tailwindcss',
+    date: '2020-02-06',
+    summary: 'The technical choices behind the Utensils website redesign, examining the rationale for selecting NextJS and TailwindCSS.',
+    source: 'utensils.io',
+  },
+  {
+    title: "TIL about Process.send_after/4",
+    url: 'https://elixirschool.com/blog/til-send-after/',
+    date: '2019-02-07',
+    summary: 'Want to schedule something to run later? Need a recurring task? Today we learn how!',
+    source: 'elixirschool.com',
+  },
+  {
+    title: 'Building web apps with Plug.Router',
+    url: 'https://elixirschool.com/blog/plug-router/',
+    date: '2019-01-25',
+    summary: 'When it comes to building a web application with Elixir many people will immediately reach for Phoenix. However, did you know Plug.Router is just as viable an option?',
+    source: 'elixirschool.com',
+  },
+  {
+    title: 'Umbrellas: only when it rains?',
+    url: 'https://elixirschool.com/blog/umbrellas-just-when-it-rains/',
+    date: '2018-10-22',
+    summary: 'A look at umbrella applications and how they can help us write cleaner maintainable code.',
+    source: 'elixirschool.com',
+  },
+  {
+    title: 'Ecto query composition',
+    url: 'https://elixirschool.com/blog/ecto-query-composition/',
+    date: '2018-07-25',
+    summary: 'Follow along as we look at how to dynamically compose Ecto queries using pattern matching and reduction.',
+    source: 'elixirschool.com',
+  },
+  {
+    title: 'Configuration Demystified',
+    url: 'https://elixirschool.com/blog/configuration-demystified/',
+    date: '2018-07-17',
+    summary: 'We attempt to clear up some confusion around configuration by looking at the different types, the roles they play, and a different approach we could take.',
+    source: 'elixirschool.com',
+  },
+  {
+    title: 'A look at Elixir 1.6',
+    url: 'https://elixirschool.com/blog/a-look-at-16/',
+    date: '2018-04-02',
+    summary: 'A peek at the latest Elixir release including the all new code formatter, exciting dynamic supervisors, and editor changes.',
+    source: 'elixirschool.com',
+  },
+].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+---
+
+<section id="writings" class="py-24 md:py-32 relative">
+  <div class="absolute inset-0 bg-gradient-to-b from-bg-dark via-bg-darker/50 to-bg-dark"></div>
+
+  <div class="relative z-10 max-w-4xl mx-auto px-6">
+    <h2 class="font-heading font-bold text-3xl md:text-4xl mb-4 text-center">
+      <span class="text-teal">/</span> Writings
+    </h2>
+    <p class="text-text-muted text-center mb-16 max-w-2xl mx-auto">
+      Sometimes the spork has opinions. Find them on
+      <a href="https://elixirschool.com" target="_blank" rel="noopener noreferrer" class="text-teal hover:text-green transition-colors">Elixir School</a>
+      and
+      <a href="https://utensils.io" target="_blank" rel="noopener noreferrer" class="text-teal hover:text-green transition-colors">Utensils</a>.
+    </p>
+
+    <div>
+      {writings.map(writing => (
+        <WritingCard {...writing} />
+      ))}
+    </div>
+  </div>
+</section>
